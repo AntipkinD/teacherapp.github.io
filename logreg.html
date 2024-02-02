@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="static/styles/style-logreg.css">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <title>Вход или Регистрация</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg p-0">
+            <div class="container-fluid p-0">
+                <a class="navbar-brand" href="#"><img src="static/images/educ.png" alt=" "></a>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div class="container">
+            <div class="forms">
+                <div class="form login">
+                    <span class="title">Добро <br>
+                        пожаловать!</span>
+
+                    <form action="#">
+                        <div class="input-field">
+                            <input type="text" placeholder="Логин" required>
+                            <i class="uil uil-user-circle"></i>
+                        </div>
+                        <div class="input-field">
+                            <input type="password" class="password" placeholder="Пароль">
+                            <i class="uil uil-lock icon"></i>
+                            <i class="uil uil-eye-slash showHidePw"></i>
+                        </div>
+
+                        <div class="checkbox-text">
+                            <div class="checkbox-content">
+                                <input type="checkbox" id="logCheck">
+                                <label for="logCheck" class="text">Запомнить меня</label>
+                            </div>
+
+                            <a href="#" class="text" style="font-weight: bold;">Забыли пароль?</a>
+                        </div>
+
+                        <div class="input-field button">
+                            <input type="button" value="ВОЙТИ">
+                        </div>
+                    </form>
+
+                    <div class="login-signup">
+                        <span class="text">Нет учетной записи?
+                            <a href="#" class="text signup-link" style="font-weight: bold;">Зарегестрироваться</a>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Registration Form -->
+                <div class="form signup">
+                    <span class="title">Регистрация</span>
+
+                    <form id="sign_up" action="#">
+                        <div class="input-block">
+                            <div class="input-field" style=" margin-right: 20px;">
+                                <input type="text" placeholder="Имя" required>
+                                <i class="uil uil-user"></i>
+                            </div>
+                            <div class="input-field" style=" margin-right: 20px;">
+                                <input type="text" placeholder="Фамилия" required>
+                                <i class="uil uil-user"></i>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" placeholder="Логин" required>
+                                <i class="uil uil-user-circle"></i>
+                            </div>
+                        </div>
+                        <!-- <div style="visibility: hidden;" class="input-field">
+                            <input type="text" placeholder="Отчество" required>
+                            <i class="uil uil-user"></i>
+                        </div> -->
+                        <div class="input-block" id="onlyteacher">
+                            <div class="input-field" style=" margin-right: 20px;">
+                                <input type="text" placeholder="Квалификация" required>
+                                <i class="uil uil-books"></i>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" placeholder="Опыт преподавания" required>
+                                <i class="uil uil-clock"></i>
+                            </div>
+                        </div>
+                        <!-- <div id="onlystudent">
+                            <div>
+                                <div style="display: flex; width: 740px;">
+                                    <div class="input-field" style=" margin-right: 20px;">
+                                        <input type="text" placeholder="Класс" required>
+                                        <i class="uil uil-books"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="input-block">
+                            <div class="input-field" style=" margin-right: 20px;">
+                                <input type="text" placeholder="Телефон" required>
+                                <i class="uil uil-phone"></i>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" placeholder="Электронная почта" required>
+                                <i class="uil uil-envelope icon"></i>
+                            </div>
+                        </div>
+                        <div class="input-block">
+                            <div class="input-field" style=" margin-right: 20px;">
+                                <input type="password" class="password" placeholder="Пароль" required>
+                                <i class="uil uil-lock icon"></i>
+                            </div>
+                            <div class="input-field">
+                                <input type="password" class="password" placeholder="Подтверждение пароля" required>
+                                <i class="uil uil-lock icon"></i>
+                                <i class="uil uil-eye-slash showHidePw"></i>
+                            </div>
+                        </div>
+                        <div class="checkbox-text">
+                            <div class="checkbox-content">
+                                <input type="checkbox" id="termCon">
+                                <label for="termCon" class="text">Я принимаю условия использования</label>
+                            </div>
+                        </div>
+                        <div class="form-check" id="teacher">
+                            <label class="form-check-label" for="flexRadioDefault1"><input checked="checked"
+                                    data-show="teacher" class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault1">
+                                Я преподаватель
+                            </label>
+                        </div>
+                        <div class="form-check" id="student">
+                            <label class="form-check-label" for="flexRadioDefault2"><input data-show="student"
+                                    class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault2">
+                                Я студент
+                            </label>
+                        </div>
+                        <div class="style">
+
+                        </div>
+                        <div class="input-field button">
+                            <input type="button" value="ЗАРЕГИСТРИРОВАТЬСЯ"
+                                style="justify-items: center; padding: 0px; font-size: 28px; height: 70px;">
+                        </div>
+                    </form>
+
+                    <div class="login-signup">
+                        <span class="text">У вас уже есть аккаунт?
+                            <a href="#" style="font-weight: bold;" class="text login-link">Войти</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="static/files/logreg-script.js"></script>
+    </section>
+    <footer>
+
+    </footer>
+</body>
+
+</html>

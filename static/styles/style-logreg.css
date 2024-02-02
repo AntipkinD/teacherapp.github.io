@@ -1,0 +1,283 @@
+@font-face {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 200;
+  /* Браузер сначала попробует найти шрифт локально */
+  src: local("Gilroy"),
+    /* Если не получилось, загрузит woff2 */
+    url("/static/files/fonts/Gilroy-Medium.woff2") format("woff2"),
+    /* Если браузер не поддерживает woff2, загрузит woff */
+    url("/static/files/fonts/Gilroy-Medium.woff") format("woff");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Gilroy;
+}
+
+section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E8CBFF;
+}
+
+.container {
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 0 20px;
+}
+
+.container .forms {
+  display: flex;
+  align-items: center;
+
+  height: 800px;
+  width: 200%;
+  transition: height 0.2s ease;
+
+}
+
+
+.container .form {
+  width: 50%;
+  padding: 30px;
+  background-color: #fff;
+  transition: margin-left 0.18s ease;
+}
+
+.container.active .login {
+  margin-left: -50%;
+  opacity: 0;
+  transition: margin-left 0.18s ease, opacity 0.15s ease;
+}
+
+.container .signup {
+  opacity: 0;
+  transition: opacity 0.09s ease;
+}
+
+.container.active .signup {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.container.active .forms {
+  height: 800px;
+}
+
+.container .form .title {
+  display: block;
+  text-align: center;
+  position: relative;
+  font-size: 36px;
+  font-weight: 600;
+  color: #808080;
+}
+
+.form .input-field {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.input-field input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 0 35px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  border-bottom: 2px solid #ccc;
+  border-radius: 5px;
+  border-top: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid) {
+  border-bottom-color: #C5FFAA;
+}
+
+div.container {
+  width: 1500px !important;
+}
+
+.input-field i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #808080;
+  font-size: 23px;
+  transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid)~i {
+  color: #B66EE2;
+}
+
+.input-field i.icon {
+  left: 0;
+}
+
+.input-field i.showHidePw {
+  right: 0;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.form .checkbox-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.checkbox-text .checkbox-content {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-content input {
+  margin-right: 10px;
+  accent-color: #C5FFAA;
+}
+
+.form-check-input input {
+  margin-right: 10px;
+}
+
+.form-check-input:checked {
+  background-color: #C5FFAA;
+  border-color: #C5FFAA;
+}
+
+.form .text {
+  color: #808080;
+  font-size: 18px;
+}
+
+.form a.text {
+  color: #B66EE2;
+  text-decoration: none;
+}
+
+.form a:hover {
+  text-decoration: underline;
+}
+
+.form .button {
+  margin-top: 35px;
+}
+
+.form .button input {
+  border: none;
+  color: #C5FFAA;
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  background-color: #D1A3FF;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button input:hover {
+  color: #EFDBFF;
+  background-color: #B66EE2;
+}
+
+.form .login-signup {
+  margin-top: 30px;
+  text-align: center;
+}
+
+header {
+  margin: 0;
+  background-color: #B66EE2;
+}
+
+.navbar-brand img {
+  background-color: #D1A3FF;
+  width: 40px;
+}
+
+.navbar-brand {
+  background-color: #D1A3FF;
+  border-bottom-right-radius: 15px;
+  padding: 15px;
+}
+
+.form {
+  height: 800px;
+  width: 800px;
+}
+
+
+.login {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.input-block {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.form .button input {
+  padding: 0px;
+  font-size: 36px !important;
+  height: 70px;
+}
+
+.form-check-label {
+  font-size: 18px;
+  color: #808080;
+}
+
+.left-content,
+.central-content {
+  padding-left: 100px;
+}
+
+.card {
+  --bs-card-border-radius: 100px !important;
+}
+
+@media (max-width: 900px) {
+  section {
+    height: auto;
+  }
+
+  .input-block {
+    display: block;
+  }
+
+  .container.active {
+    align-self: start;
+    height: 1100px;
+    margin: 9px;
+  }
+
+  .container {
+    align-self: start;
+    height: 850px;
+    margin: 9px;
+  }
+
+  .form .button input {
+    padding: 0px;
+    font-size: 24px !important;
+    height: 70px;
+  }
+}

@@ -1,0 +1,204 @@
+@font-face {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 200;
+  /* Браузер сначала попробует найти шрифт локально */
+  src: local("Gilroy"),
+    /* Если не получилось, загрузит woff2 */
+    url("/static/files/fonts/Gilroy-Medium.woff2") format("woff2"),
+    /* Если браузер не поддерживает woff2, загрузит woff */
+    url("/static/files/fonts/Gilroy-Medium.woff") format("woff");
+}
+
+* {
+  font-family: Gilroy;
+}
+
+.nav,
+.nav-item,
+.nav-link {
+  height: 70px;
+}
+
+.nav-item {
+  width: 269px;
+
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #B66EE2;
+  color: #EFDBFF;
+}
+
+.nav-tabs {
+  --bs-nav-tabs-link-active-border-color: #E8CBFF;
+  --bs-nav-tabs-link-hover-border-color: #B66EE2;
+}
+
+.nav-link {
+  background-color: #D1A3FF;
+}
+
+.nav-link {
+  color: #EFDBFF !important;
+  border-top-left-radius: 40px !important;
+  border-bottom-right-radius: 40px !important;
+  border-bottom-left-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+}
+
+.navbar-toggler {
+  color: #B66EE2 !important;
+  justify-self: right !important;
+  border-radius: 0px !important;
+  border: none !important;
+ 
+}
+.main-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(1);
+  background-color: #E8CBFF;
+}
+
+/* это для вкладки расписание */
+.left-bar {
+  grid-column: 1/3;
+  background-color: #EFDBFF;
+}
+
+.container {
+  grid-column: 3/11;
+}
+
+.left-bar>th {
+  width: 100%;
+  height: 100%;
+  margin: 1em;
+  padding: 1em;
+  padding-bottom: 1em;
+  border-style: solid;
+  border-width: 0.5px;
+  color: rgb(0, 0, 0);
+}
+
+.table {
+  margin: 0;
+}
+
+/*  */
+body {
+  background-color: #E8CBFF;
+
+}
+
+button {
+  height: 50px;
+  width: 100px;
+  margin: 0;
+  background-color: #C5FFAA;
+}
+
+dialog {
+  background-color: #EFDBFF;
+  font-size: 20px;
+  border: none;
+}
+
+dialog>img {
+  width: 500px;
+}
+
+h2 {
+  background-color: #B66EE2;
+  color: #EFDBFF;
+  font-size: 35px;
+}
+
+.row2 {
+  background-color: #EFDBFF;
+}
+
+.row2 p {
+  margin: 0;
+  font-size: 20px;
+}
+
+.row2 img {
+  width: 100%;
+}
+
+.sidebar {
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: rgb(255, 249, 249);
+}
+
+.img-dialog, .card-img-top, img {
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+  border: none;
+}
+.sidebar{
+  border: none
+}
+button {
+  border-radius: 15px;
+  border: none;
+}
+
+
+h2 {
+  border-radius: 15px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  padding: 5px;
+  margin: 5px;
+}
+
+a.card-link:hover {
+  text-decoration: underline !important;
+}
+
+.button:hover,
+.button>p:hover {
+  color: #B66EE2;
+  background-color: #EFDBFF;
+}
+.card, .card>a>img, .event-opened{
+  border-radius: 15px !important;
+}
+.event-opened {
+  background-color: #FFFFFF;
+}
+
+#chat3 .form-control {
+  border-color: transparent;
+  }
+  
+  #chat3 .form-control:focus {
+  border-color: transparent;
+  box-shadow: inset 0px 0px 0px 1px transparent;
+  }
+  
+  .badge-dot {
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  margin-left: 2.9rem;
+  margin-top: -.75rem;
+  }
+
+  @media(max-width: 1100px){
+    .nav.nav-tabs{
+      display: inline;
+    }
+    .nav-item{
+      width: 100%;
+    }
+    .navbar{
+      width: 100%;
+    }
+  }
