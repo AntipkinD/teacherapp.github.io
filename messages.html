@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сообщения</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="static/styles/style_events.css">
+  <link rel="stylesheet" href="static/styles/style_messages.css">
+
+</head>
+
+<body>
+  <header>
+    <nav class="navbar bg-body-tertiary p-0 d-flex justify-content-start">
+      <div class="container-fluid p-0 m-0 align-items-start"
+        style="display: flex; height: 70; background-color: #B66EE2; font-size: 32px; font-weight: bold;">
+        <div class="navbar navbar-expand-xl bg-body-none p-0 d-flex">
+          <span class="">
+            <button style="height: 70px; width: 70px; background-color: #D1A3FF;" class=" navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </span>
+          <a class="navbar-brand m-0 d-flex" href="dnevnik.html"
+            style="background-color: #D1A3FF; border-bottom-right-radius: 40px; padding: 15px;">
+            <img src="static/images/educ.png" alt="Icon" width="40" height="40">
+          </a>
+          <div style="background-color: #B66EE2;" class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <div class="elements p-absolute  d-block">
+              <ul class="nav nav-tabs border-0 me-auto mb-lg-0">
+
+                <li class="nav-item">
+                  <a class="nav-link border-5 d-flex justify-content-center" aria-current="page"
+                    href="events.html">МЕРОПРИЯТИЯ</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link border-5 d-flex justify-content-center" href="timetable.html">РАСПИСАНИЕ</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link border-5 d-flex justify-content-center" href="journal.html">ЖУРНАЛ</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link border-5 d-flex justify-content-center active" href="messages.html">СООБЩЕНИЯ</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <body>
+    <div class="container clearfix">
+      <div class="people-list" id="people-list">
+        <div class="search">
+          <input type="text" placeholder="поиск" />
+          <i class="fa fa-search"></i>
+        </div>
+        <ul class="list">
+          <li class="clearfix selected">
+            <div class="about">
+              <a onclick="window.second_event.showModal()" class="name">Игнат Юсупов</a>
+            </div>
+          </li>
+
+          <li class="clearfix">
+            <div class="about">
+              <a class="name">Артем Аркин</a>
+            </div>
+          </li>
+
+          <li class="clearfix">
+            <div class="about">
+              <a class="name">Михаил Жиглов</a>
+            </div>
+          </li>
+
+          <li class="clearfix">
+            <div class="about">
+              <a class="name">Эмануэлла Доберман</a>
+            </div>
+          </li>
+
+          <li class="clearfix">
+            <div class="about">
+              <a class="name">Степанна Ануфриева</a>
+            </div>
+          </li>
+
+          <li class="clearfix">
+            <div class="about">
+              <a class="name">Дмитрий Круглый</a>
+            </div>
+          </li>
+
+          <li class="clearfix">
+            <div class="about">
+              <a class="name">Улугбек Касаткин</a>
+            </div>
+          </li>
+
+          <li class="clearfix">
+
+            <div class="about">
+              <a class="name">Игорь Ташкинов</a>
+            </div>
+          </li>
+
+          <li class="clearfix">
+            <div class="about">
+              <a class="name">Алексей Лихачев</a>
+            </div>
+          </li>
+
+          <li class="clearfix">
+            <div class="about">
+              <a class="name">Петра Кулакова</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="chat">
+        <div class="chat-header clearfix">
+
+          <div class="chat-about">
+            <div class="chat-with">Игнат Юсупов</div>
+            <div class="chat-num-messages"></div>
+          </div>
+          <i class="fa fa-star"></i>
+        </div> <!-- конец сайдбара с человечками -->
+
+        <div class="chat-history">
+          <ul>
+            <li class="clearfix">
+              <div class="message-data align-right">
+                <span class="message-data-time">10:10, Сегодня</span> &nbsp; &nbsp;
+                <span class="message-data-name">Виктория</span> <i class="fa fa-circle me"></i>
+
+              </div>
+              <div class="message other-message float-right">
+                Здравствуйте, меня сегодня не будет (
+              </div>
+            </li>
+
+            <li>
+              <div class="message-data">
+                <span class="message-data-name"><i class="fa fa-circle online"></i> Игнат</span>
+                <span class="message-data-time">10:12, Сегодня</span>
+              </div>
+              <div class="message my-message">
+                Хорошо, тогда мне потребуется справка или заявление от родителей
+              </div>
+            </li>
+
+            <li class="clearfix">
+              <div class="message-data align-right">
+                <span class="message-data-time">10:14, Сегодня</span> &nbsp; &nbsp;
+                <span class="message-data-name">Виктория</span> <i class="fa fa-circle me"></i>
+
+              </div>
+              <div class="message other-message float-right">
+                Что ж, мама напишет его сегодня
+              </div>
+            </li>
+
+            <li>
+              <div class="message-data">
+                <span class="message-data-name"><i class="fa fa-circle online"></i> Игнат</span>
+                <span class="message-data-time">10:20, Сегодня</span>
+              </div>
+              <div class="message my-message">
+                Отлично, буду ждать 🙂
+              </div>
+            </li>
+          </ul>
+
+        </div> <!-- конец истории чата -->
+
+        <div class="chat-message clearfix">
+          <textarea name="message-to-send" id="message-to-send" placeholder="Введите сообщение" rows="3"></textarea>
+
+          <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
+          <i class="fa fa-file-image-o"></i>
+
+          <button>Отправить</button>
+
+        </div> <!-- конец сообщений -->
+
+      </div> <!-- конец чата -->
+
+    </div> <!-- конец контейнера -->
+
+    <script id="message-template" type="text/x-handlebars-template">
+          <li class="clearfix">
+            <div class="message-data align-right">
+              <span class="message-data-time" >{{time}}, Today</span> &nbsp; &nbsp;
+              <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
+            </div>
+            <div class="message other-message float-right">
+              {{messageOutput}}
+            </div>
+          </li>
+        </script>
+
+    <script id="message-response-template" type="text/x-handlebars-template">
+          <li>
+            <div class="message-data">
+              <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+              <span class="message-data-time">{{time}}, Today</span>
+            </div>
+            <div class="message my-message">
+              {{response}}
+            </div>
+          </li>
+        </script>
+        <script src="static/files/messages-script.js"></script>
+  </body>
+  <footer>
+
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  
+</body>
+
+</html>

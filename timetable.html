@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Расписание</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="static/styles/style_events.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar bg-body-tertiary p-0 d-flex justify-content-start">
+      <div class="container-fluid p-0 m-0 align-items-start"
+        style="display: flex; height: 70; background-color: #B66EE2; font-size: 32px; font-weight: bold;">
+        <div class="navbar navbar-expand-xl bg-body-none p-0 d-flex">
+          <span class="">
+            <button style="height: 70px; width: 70px; background-color: #D1A3FF;" class=" navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </span>
+          <a class="navbar-brand m-0 d-flex justify-content-end" href="#"
+            style="background-color: #D1A3FF; border-bottom-right-radius: 40px; padding: 15px;">
+            <img src="static/images/educ.png" alt="Icon" width="40" height="40">
+          </a>
+          <div style="background-color: #B66EE2;" class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="nav nav-tabs border-0 me-auto mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link border-5 d-flex justify-content-center " aria-current="page"
+                  href="events.html">МЕРОПРИЯТИЯ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link border-5 d-flex justify-content-center active" href="timetable.html">РАСПИСАНИЕ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link border-5 d-flex justify-content-center" href="journal.html">ЖУРНАЛ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link border-5 d-flex justify-content-center" href="messages.html">СООБЩЕНИЯ</a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <div class="main-container">
+    <div class="left-bar">
+      <h2 class="m-0 mt-4 w-100">Список замен</h2>
+      <table class="w-100" style="background-color: aliceblue;">
+        <thead>
+          <tr>
+            <th scope="col">Понедельник</th>
+            <th scope="col">9 класс</th>
+          </tr>
+        </thead>
+        <tbody class="m-0">
+          <tr>
+            <th scope="row">1</th>
+            <td>Физика</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>билогия</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Русский язык</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>Алгебра</td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td>Обществознание</td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td>Физ.культура</td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container">
+      <div class="select-sort">
+        <select name="sort" id="js-sort">
+          <option value="1 класс">1 класс</option>
+          <option value="2 класс">2 класс</option>
+          <option value="3 класс">3 класс</option>
+          <option value="4 класс">4 класс</option>
+          <option value="5 класс">5 класс</option>
+          <option value="6 класс">6 класс</option>
+          <option value="7 класс">7 класс</option>
+          <option value="8 класс">8 класс</option>
+          <option value="9 класс">9 класс</option>
+          <option value="10 класс">10 класс</option>
+          <option value="11 класс">11 класс</option>
+        </select>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Понедельник</th>
+            <th scope="col">Предмет</th>
+            <th scope="col">кабинет</th>
+            <th scope="col">преподаватель</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="" 7>Вторник</th>
+            <th scope="col">Предмет</th>
+            <th scope="col">кабинет</th>
+            <th scope="col">преподаватель</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Среда</th>
+            <th scope="col">Предмет</th>
+            <th scope="col">кабинет</th>
+            <th scope="col">преподаватель</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Четверг</th>
+            <th scope="col">Предмет</th>
+            <th scope="col">кабинет</th>
+            <th scope="col">преподаватель</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Пятница</th>
+            <th scope="col">Предмет</th>
+            <th scope="col">кабинет</th>
+            <th scope="col">преподаватель</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Субота</th>
+            <th scope="col">Предмет</th>
+            <th scope="col">кабинет</th>
+            <th scope="col">преподаватель</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- <button type="button" onclick="window.myDialog.showModal()">
+        Добавть расписание
+      </button>
+      <dialog id="myDialog">Привет
+      <button type="button" onclick="window.myDialog.close()">
+          Закрыть 
+        </button>
+        </dialog>   -->
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
