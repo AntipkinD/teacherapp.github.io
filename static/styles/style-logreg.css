@@ -253,7 +253,22 @@ header {
 .card {
   --bs-card-border-radius: 100px !important;
 }
+@media (max-height: 800px) {
+  section {
+    height: auto;
+  }
+  .container.active {
+    align-self: start;
+    height: 700px;
+    margin: 9px;
+  }
 
+  .container {
+    align-self: start;
+    height: 700px;
+    margin: 9px;
+  }
+}
 @media (max-width: 900px) {
   section {
     height: auto;
