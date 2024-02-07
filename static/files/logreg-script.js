@@ -117,6 +117,7 @@ function loginUser() {
         .then(data => {
             console.log('Пользователь найден:', data);
             // Если пользователь найден, откройте другое окно
+            localStorage.setItem('userInfo', JSON.stringify(data));
             window.location.href = 'events.html'; // Замените 'новая_страница.html' на адрес новой страницы
         })
         .catch(error => {

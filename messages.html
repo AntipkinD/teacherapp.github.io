@@ -9,6 +9,20 @@
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="static/styles/style_events.css">
   <link rel="stylesheet" href="static/styles/style_messages.css">
+  <style>
+    .black-text {
+      color: black;
+    }
+    /* Добавляем стили для элемента <li> */
+    li {
+      overflow: auto;
+      clear: both;
+    }
+
+    /* Добавляем отступ снизу для блока с данными отправителя */
+    .message-data {
+      margin-bottom: 5px;}
+  </style>
 
 </head>
 
@@ -64,36 +78,6 @@
           <i class="fa fa-search"></i>
         </div>
         <ul class="list">
-          <li class="clearfix selected">
-            <div class="about">
-              <a onclick="window.second_event.showModal()" class="name">22ПТ14</a>
-            </div>
-          </li>
-
-          <li class="clearfix">
-            <div class="about">
-              <a class="name">23ИТ11</a>
-            </div>
-          </li>
-
-          <li class="clearfix">
-
-            <div class="about">
-              <a class="name">20ПТ21</a>
-            </div>
-          </li>
-
-          <li class="clearfix">
-            <div class="about">
-              <a class="name">22ИТ35</a>
-            </div>
-          </li>
-
-          <li class="clearfix">
-            <div class="about">
-              <a class="name">20ИТ18</a>
-            </div>
-          </li>
         </ul>
       </div>
 
@@ -129,27 +113,6 @@
                 Хорошо, тогда мне потребуется справка или заявление от родителей
               </div>
             </li>
-
-            <li class="clearfix">
-              <div class="message-data align-right">
-                <span class="message-data-time">10:14, Сегодня</span> &nbsp; &nbsp;
-                <span class="message-data-name">Виктория</span> <i class="fa fa-circle me"></i>
-
-              </div>
-              <div class="message other-message float-right">
-                Что ж, мама напишет его сегодня
-              </div>
-            </li>
-
-            <li>
-              <div class="message-data">
-                <span class="message-data-name"><i class="fa fa-circle online"></i> Игнат</span>
-                <span class="message-data-time">10:20, Сегодня</span>
-              </div>
-              <div class="message my-message">
-                Отлично, буду ждать 🙂
-              </div>
-            </li>
           </ul>
 
         </div> <!-- конец истории чата -->
@@ -160,7 +123,7 @@
           <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
           <i class="fa fa-file-image-o"></i>
 
-          <button>Отправить</button>
+          <button id="send-button">Отправить</button>
 
         </div> <!-- конец сообщений -->
 
@@ -199,6 +162,126 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+
+      if (userInfo) {
+        console.log("Информация о пользователе на странице сообщений:", userInfo);
+
+        fetch(`http://localhost:8080/api/v1/teacher?userId=${userInfo.id}`)
+                .then(response => response.json())
+                .then(data => {
+                  if (data.length > 0) {
+                    // Получаем информацию о группах
+                    fetch('http://localhost:8080/api/v1/group')
+                            .then(response => response.json())
+                            .then(data => {
+                              console.log("Информация о группах:", data);
+
+                              data.forEach(group => {
+                                // Создаем элемент li для каждой группы
+                                const groupLi = document.createElement('li');
+                                groupLi.className = 'clearfix';
+
+                                // Создаем элемент button для названия группы
+                                const groupButton = document.createElement('button');
+                                groupButton.className = 'group-button black-text';
+                                groupButton.innerText = group.title;
+                                groupButton.setAttribute('data-group-id', group.id);
+
+                                groupButton.addEventListener('click', function() {
+                                  const groupId = this.getAttribute('data-group-id');
+                                  const groupName = this.innerText;
+
+                                  // Изменяем название чата на название группы
+                                  document.querySelector('.chat-with').innerText = groupName;
+
+                                  // Выполнить действия с полученным ID группы
+                                  console.log(`ID выбранной группы: ${groupId}`);
+                                });
+
+                                // Добавляем элемент a в элемент li
+                                groupLi.appendChild(groupButton);
+
+                                // Добавляем элемент li в список групп
+                                document.querySelector('.people-list .list').appendChild(groupLi);
+                              });
+                            });
+                  } else {
+                    // Получаем информацию о студенте и его группе
+                    const studentId = userInfo.id;
+                    fetch(`http://localhost:8080/api/v1/student/${studentId}`)
+                            .then(response => response.json())
+                            .then(data => {
+                              console.log("Информация о студенте и его группе:", data);
+
+                              // Получаем название группы студента
+                              const studentGroupTitle = data.groups.title;
+
+                              // Находим элемент a с классом 'name' и вставляем название группы
+                              const studentGroupNameElement = document.querySelector('.people-list .list');
+                              studentGroupNameElement.innerText = studentGroupTitle;
+                              studentGroupNameElement.classList.add('black-text'); // Добавляем класс "black-text"
+                            });
+                  }
+                });
+      }
+    });
+
+    document.getElementById('send-button').addEventListener('click', function() {
+      const messageInput = document.getElementById('message-to-send');
+      const messageText = messageInput.value.trim();
+
+      if (messageText !== '') {
+        const currentTime = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        const userId = userInfo.id;
+        const userName = userInfo.first_name;
+        const userSurname = userInfo.last_name;
+
+
+        const newMessage = {
+          user_id: userId,
+          text: messageText,
+          Date: currentTime
+        };
+
+        fetch('http://localhost:8080/api/v1/message', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(newMessage)
+        })
+                .then(response => {
+                  if (response.ok) {
+                    const chatHistory = document.querySelector('.chat-history ul');
+                    const newMessageHTML = `
+                    <li>
+                        <div class="message-data align-right">
+                            <span class="message-data-time">${currentTime}</span>
+                            <span class="message-data-name"><i class="fa fa-circle online"></i>${userName} ${userSurname}</span>
+                        </div>
+                        <div class="message other-message float-right">
+                            ${messageText}
+                        </div>
+                    </li>
+                `;
+                    chatHistory.insertAdjacentHTML('beforeend', newMessageHTML);
+
+                    // Очищаем текстовое поле после отправки сообщения
+                    messageInput.value = '';
+                  } else {
+                    console.error('Failed to send message to the server');
+                  }
+                })
+                .catch(error => {
+                  console.error('Error:', error);
+                });
+      }
+    });
+  </script>
   
 </body>
 

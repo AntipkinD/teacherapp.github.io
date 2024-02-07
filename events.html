@@ -37,19 +37,19 @@
 
                             <li class="nav-item">
                                 <a class="nav-link border-5 d-flex justify-content-center active" aria-current="page"
-                                    href="events.html">МЕРОПРИЯТИЯ</a>
+                                   href="events.html">МЕРОПРИЯТИЯ</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link border-5 d-flex justify-content-center"
-                                    href="timetable.html">РАСПИСАНИЕ</a>
+                                   href="timetable.html">РАСПИСАНИЕ</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link border-5 d-flex justify-content-center"
-                                    href="journal.html">ЖУРНАЛ</a>
+                                   href="journal.html">ЖУРНАЛ</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link border-5 d-flex justify-content-center"
-                                    href="messages.html">СООБЩЕНИЯ</a>
+                                   href="messages.html">СООБЩЕНИЯ</a>
                             </li>
                         </ul>
                     </div>
@@ -329,6 +329,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+            if (userInfo) {
+                console.log("Информация о пользователе на странице мероприятия:", userInfo);
+                // Здесь вы можете использовать полученные данные о пользователе для нужных действий на странице
+            } else {
+                console.log("Данные о пользователе не найдены в localStorage");
+            }
+        });
+    </script>
 </body>
 
 </html>
