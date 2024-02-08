@@ -138,9 +138,24 @@
       const selectedGroup = selectElement.value;
       console.log("Выбранная группа:", selectedGroup);
 
-      // Здесь можно отправить запрос на сервер для получения расписания выбранной группы
-      // Замените этот комментарий на соответствующий код для обновления расписания на странице
-      // Пример: timetableBody.innerHTML = `<tr>...</tr>`;
+      fetch(`https://example.com/schedule?group=${selectedGroup}`)
+        .then(response => response.json())
+        .then(data => {
+          timetableBody.innerHTML = "";
+          data.forEach(item => {
+            timetableBody.innerHTML += `
+              <tr>
+                <th scope="row">${item.time}</th>
+                <td>${item.subject}</td>
+                <td>${item.classroom}</td>
+                <td>${item.teacher}</td>
+              </tr>
+            `;
+          });
+        })
+        .catch(error => {
+          console.error('Ошибка при получении расписания:', error);
+        });
     });
 
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
