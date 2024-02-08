@@ -85,7 +85,7 @@
         <div class="chat-header clearfix">
 
           <div class="chat-about">
-            <div class="chat-with">22ПТ14</div>
+            <div class="chat-with">Чат</div>
             <div class="chat-num-messages"></div>
           </div>
           <i class="fa fa-star"></i>
@@ -93,26 +93,6 @@
 
         <div class="chat-history">
           <ul>
-            <li class="clearfix">
-              <div class="message-data align-right">
-                <span class="message-data-time">10:10, Сегодня</span> &nbsp; &nbsp;
-                <span class="message-data-name">Виктория</span> <i class="fa fa-circle me"></i>
-
-              </div>
-              <div class="message other-message float-right">
-                Здравствуйте, меня сегодня не будет (
-              </div>
-            </li>
-
-            <li>
-              <div class="message-data">
-                <span class="message-data-name"><i class="fa fa-circle online"></i> Игнат</span>
-                <span class="message-data-time">10:12, Сегодня</span>
-              </div>
-              <div class="message my-message">
-                Хорошо, тогда мне потребуется справка или заявление от родителей
-              </div>
-            </li>
           </ul>
 
         </div> <!-- конец истории чата -->
@@ -169,10 +149,10 @@
       if (userInfo) {
         console.log("Информация о пользователе на странице сообщений:", userInfo);
 
-        fetch(`http://localhost:8080/api/v1/teacher?userId=${userInfo.id}`)
+        fetch(`http://localhost:8080/api/v1/teacher/${userInfo.id}`)
                 .then(response => response.json())
                 .then(data => {
-                  if (data.length > 0) {
+                  if (data.id !== null) {
                     // Получаем информацию о группах
                     fetch('http://localhost:8080/api/v1/group')
                             .then(response => response.json())
@@ -192,6 +172,7 @@
 
                                 groupButton.addEventListener('click', function() {
                                   const groupId = this.getAttribute('data-group-id');
+                                  currentGroupId = groupId;
                                   const groupName = this.innerText;
 
                                   // Изменяем название чата на название группы
@@ -199,6 +180,34 @@
 
                                   // Выполнить действия с полученным ID группы
                                   console.log(`ID выбранной группы: ${groupId}`);
+                                  fetch(`http://localhost:8080/api/v1/message/${groupId}`)
+                                          .then(response => response.json())
+                                          .then(messages => {
+                                            const chatHistory = document.querySelector('.chat-history ul');
+                                            chatHistory.innerHTML = ''; // Очищаем существующие сообщения
+
+                                            messages.forEach(message => {
+                                              let userName = message.users.first_name + ' ' + message.users.last_name;
+                                              let messageClass = message.user_id === userInfo.id ? 'other-message' : 'my-message';
+                                              let messageAlign = message.user_id === userInfo.id ? 'align-right' : '';
+                                              const messageHTML = `
+                                                <li class="clearfix">
+                                                    <div class="message-data ${messageAlign}">
+                                                        <span class="message-data-time">${message.date}</span>
+                                                        <span class="message-data-name">${userName}</span>
+                                                        ${message.user_id === userInfo.id ? '<i class="fa fa-circle me"></i>' : ''}
+                                                    </div>
+                                                    <div class="message ${messageClass} float-${messageAlign}">
+                                                        ${message.text}
+                                                    </div>
+                                                </li>
+                                            `;
+                                              chatHistory.insertAdjacentHTML('beforeend', messageHTML);
+                                            });
+                                          })
+                                          .catch(error => {
+                                            console.error('Failed to fetch messages for the group', error);
+                                          });
                                 });
 
                                 // Добавляем элемент a в элемент li
@@ -210,30 +219,68 @@
                             });
                   } else {
                     // Получаем информацию о студенте и его группе
-                    const studentId = userInfo.id;
-                    fetch(`http://localhost:8080/api/v1/student/${studentId}`)
+                    fetch(`http://localhost:8080/api/v1/student/${userInfo.id}`)
                             .then(response => response.json())
                             .then(data => {
                               console.log("Информация о студенте и его группе:", data);
 
-                              // Получаем название группы студента
-                              const studentGroupTitle = data.groups.title;
-
-                              // Находим элемент a с классом 'name' и вставляем название группы
+                              const firstGroup = data[0];
                               const studentGroupNameElement = document.querySelector('.people-list .list');
-                              studentGroupNameElement.innerText = studentGroupTitle;
+                              const groupButton = document.createElement('button');
+                              groupButton.className = 'group-button black-text';
+                              groupButton.innerText = firstGroup.groups.title;
+                              groupButton.addEventListener('click', function() {
+                                const groupId = firstGroup.groupId;
+                                currentGroupId = groupId;
+                                const groupName = firstGroup.groups.title;
+
+                                // Изменяем название чата на название группы
+                                document.querySelector('.chat-with').innerText = groupName;
+
+                                // Выполнить действия с полученным ID группы
+                                console.log(`ID выбранной группы: ${groupId}`);
+                                fetch(`http://localhost:8080/api/v1/message/${groupId}`)
+                                        .then(response => response.json())
+                                        .then(messages => {
+                                          const chatHistory = document.querySelector('.chat-history ul');
+                                          chatHistory.innerHTML = ''; // Очищаем существующие сообщения
+
+                                          messages.forEach(message => {
+                                            let userName = message.users.first_name + ' ' + message.users.last_name;
+                                            let messageClass = message.user_id === userInfo.id ? 'other-message' : 'my-message';
+                                            let messageAlign = message.user_id === userInfo.id ? 'align-right' : '';
+                                            const messageHTML = `
+                                            <li class="clearfix">
+                                                <div class="message-data ${messageAlign}">
+                                                    <span class="message-data-time">${message.date}</span>
+                                                    <span class="message-data-name">${userName}</span>
+                                                    ${message.user_id === userInfo.id ? '<i class="fa fa-circle me"></i>' : ''}
+                                                </div>
+                                                <div class="message ${messageClass} float-${messageAlign}">
+                                                    ${message.text}
+                                                </div>
+                                            </li>
+                                        `;
+                                            chatHistory.insertAdjacentHTML('beforeend', messageHTML);
+                                          });
+                                        })
+                                        .catch(error => {
+                                          console.error('Failed to fetch messages for the group', error);
+                              });
+                  });
+                              studentGroupNameElement.appendChild(groupButton);
                               studentGroupNameElement.classList.add('black-text'); // Добавляем класс "black-text"
-                            });
-                  }
                 });
       }
     });
+      }});
 
     document.getElementById('send-button').addEventListener('click', function() {
       const messageInput = document.getElementById('message-to-send');
       const messageText = messageInput.value.trim();
 
       if (messageText !== '') {
+        const groupId = currentGroupId;
         const currentTime = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
         const userInfo = JSON.parse(localStorage.getItem('userInfo'));
         const userId = userInfo.id;
@@ -243,8 +290,9 @@
 
         const newMessage = {
           user_id: userId,
+          groupId: groupId,
           text: messageText,
-          Date: currentTime
+          date: currentTime
         };
 
         fetch('http://localhost:8080/api/v1/message', {
